@@ -18,6 +18,7 @@ enum Result {
 
 struct Handlers {
     typealias personHandler = (Result) -> Void
+    typealias personHandlerReturn = (Result) -> String
 }
 
 
@@ -31,7 +32,7 @@ class Person {
         self.age  = age
     }
     
-    func performAdd(done: Handlers.personHandler){
+    func performAdd(     done:Handlers.personHandler) {
         print("Add ---- " + "\(name)")
         done(Result.empty())
         print("Add ---- " + "\(name)")
@@ -43,10 +44,17 @@ class Person {
         done(Result.handlers(person))
         print("Multiply ---- " + "\(name)")
     }
+    
+    func performSubstraction(done: Handlers.personHandlerReturn) {
+        print("Subs1")
+        let name = done(Result.handlers("Daniyal" as AnyObject))
+        print("\(name)")
+    }
 }
 
 extension Dictionary {
     var o : AnyObject {
         return self as AnyObject
     }
+    
 }

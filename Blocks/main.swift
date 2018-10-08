@@ -26,9 +26,18 @@ person1.performMultiple { (AnyObject) in
         
     default:
         print("default case")
-        
-        
     }
-    
-   
+}
+
+person1.performSubstraction { (result) -> String in
+    switch result {
+        
+    case .handlers (let obj):               //call back send value back
+        print(obj)
+        return "Ahmed!!!"
+        
+    default:
+        print("this is default")
+        return "No Ahmed"
+    }
 }
