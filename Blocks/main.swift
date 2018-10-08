@@ -11,11 +11,24 @@ import Foundation
 print("Hello, World!")
 
 var person1 = Person()
-person1.performAdd {
+person1.performAdd {_ in 
     person1.name = "Nabeel"
 }
 
 
-person1.performMultiple { (a, d) in
-    person1.name = d
+person1.performMultiple { (AnyObject) in
+    
+    switch AnyObject {
+        
+    case .handlers(let obj):
+        let castPerson  = obj  as! Person //forcing casting -- end programmer has to do optional binding himself.
+        person1.name = castPerson.name
+        
+    default:
+        print("default case")
+        
+        
+    }
+    
+   
 }
