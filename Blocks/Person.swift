@@ -8,6 +8,10 @@
 
 import Foundation
 
+@objc protocol PersonDelegate: PortDelegate {
+    @objc optional func didTappedRight()
+}
+
 enum Result {
     
     case handlers(AnyObject)
